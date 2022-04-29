@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>book</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body style="background: url('https://i.playground.ru/i/pix/1422327/image.jpg') no-repeat center;
+background-size: cover;
+height: 100vh;
+">
+<style>
+    body {
+         background: url("https://i.playground.ru/i/pix/1422327/image.jpg");
+    }
+
+    .book__container {
+        max-width: 700px;
+        margin-top: 50px;
+
+    }
+
+    .book__img {
+        height: 250px;
+        object-fit: fill;
+    }
+
+    .book__card-body {
+        background-color: #3D3F8C;
+
+    }
+
+    .book__button {
+        margin-top: 30px;
+
+    }
+
+</style>
+
+<div class="container">
+    <button type="button" class="btn btn-secondary book__button"><a href="/book/">All Book</a></button>
+    <button type="button" class="btn btn-secondary book__button"><a href="/book/latest/">Lates</a></button>
+    <button type="button" class="btn btn-secondary book__button"><a href="/book/detective/">Detective</a></button>
+    <button type="button" class="btn btn-secondary book__button"><a href="/book/romace/">Romace</a></button>
+    <button type="button" class="btn btn-secondary book__button"> <a href="/book/fantasies/">Fantasies</a> </button>
+    <button type="button" class="btn btn-secondary book__button"> <a href="/book/anime/">Anime</a> </button>
+</div>
+<div class="container book__container ">
+    <div class="row gy-5">
+        {% for i in object_list %}
+            <div class="col-4">
+                <div class="card">
+                    <img src="{{ i.image.url }}" class="card-img-top book__img" alt="...">
+                    <div class="card-body book__card-body">
+                        <h5 class="card-title">{{ i.title }}</h5>
+                        <p class="card-text">{{ i.author }}</p>
+                        <a href="{{ i.id }}/" class="btn btn-primary">Read</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+</body>
+</html>
