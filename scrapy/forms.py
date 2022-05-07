@@ -21,6 +21,6 @@ class ParserForm(forms.Form):
             for data in book_parser:
                 models.ParserBook.objects.create(**data)
         elif self.data['media_type'] == "New":
-            new_parser = parser.parser_func()
+            new_parser = parser.parser_func2()
             for data in new_parser:
                  models.ParserBook.objects.create(**data)

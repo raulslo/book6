@@ -48,6 +48,7 @@ def parser_func():
 
 HOST2 = "https://kaktus.media/?lable=8&date=2022-05-07&order=time"
 
+
 @csrf_exempt
 def get_html(url, params=''):
     r = requests.get(url, headers=HEADESRS, params=params)
@@ -70,7 +71,7 @@ def get_data(html):
     return ranobe
 
 @csrf_exempt
-def parser_func():
+def parser_func2():
     html = get_html(HOST2)
     if html.status_code == 200:
          ranobe = []
@@ -78,9 +79,4 @@ def parser_func():
              html = get_html(HOST2)
              ranobe.extend(get_data(html.text))
          return ranobe
-
-
-
-
-
 
