@@ -21,7 +21,7 @@ class ParserFormView(generic.FormView):
 class ParserListView(generic.ListView):
     template_name = "parserbook_list.html"
     queryset = models.ParserBook.objects.all()
-    # print(queryset)
+
 
     def get_queryset(self):
         return self.queryset

@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from django.views.decorators.csrf import csrf_exempt
 
 HOST = "https://www.chitai-gorod.ru/"
+HOST2 = "https://kaktus.media/?lable=8&date=2022-05-07&order=time"
 
 
 
@@ -46,7 +47,7 @@ def parser_func():
          return book
 
 
-HOST2 = "https://kaktus.media/?lable=8&date=2022-05-07&order=time"
+
 
 
 @csrf_exempt
@@ -58,17 +59,17 @@ def get_html(url, params=''):
 def get_data(html):
     soup = BeautifulSoup(html, "html.parser")
     items = soup.find_all("div", class_="ArticleItem")
-    ranobe = []
+    new = []
 
     for item in items:
-        ranobe.append(
+        new.append(
             {
                 "title": item.find("a", class_="ArticleItem--name").get_text(),
                 "image": item.find('a', class_="ArticleItem--image").find('img').get('src')
-                # "image": item.find('a').find('img').get('svg')
+
             }
         )
-    return ranobe
+    return new
 
 @csrf_exempt
 def parser_func2():
