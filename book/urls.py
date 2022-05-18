@@ -12,7 +12,7 @@ urlpatterns = [
     path(
         "book/latest/",
         views.BookListView.as_view(
-            queryset=models.Book.objects.filter(createa_data__gt=start_date).order_by(
+            queryset=models.Book.objects.filter(created_date__gt=start_date).order_by(
                 "-id"
             )
         ),
